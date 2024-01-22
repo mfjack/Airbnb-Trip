@@ -3,7 +3,7 @@ import { Nunito } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar/Navbar";
 import ClientOnly from "./components/ClientOnly";
-import Modal from "./components/modals/Modal";
+import RegisterModal from "./components/modals/RegisterModal";
 
 export const metadata: Metadata = {
     title: "Airbnb",
@@ -14,16 +14,12 @@ const font = Nunito({
     subsets: ["latin"],
 });
 
-export default function RootLayout({
-    children,
-}: {
-    children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="pt-BR">
             <body className={font.className}>
                 <ClientOnly>
-                    <Modal title='Olá mundo!' isOpen />
+                    <RegisterModal />
                     <Navbar />
                 </ClientOnly>
                 {children}

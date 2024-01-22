@@ -14,7 +14,7 @@ interface ModalProps {
     actionLabel: String;
     disabled: boolean;
     secondaryAction?: () => void;
-    secondaryLabel?: String;
+    secondaryActionLabel?: String;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -27,7 +27,7 @@ const Modal: React.FC<ModalProps> = ({
     actionLabel,
     disabled,
     secondaryAction,
-    secondaryLabel,
+    secondaryActionLabel,
 }) => {
     const [showModal, setShowModal] = useState(isOpen);
 
@@ -82,16 +82,26 @@ const Modal: React.FC<ModalProps> = ({
                                 >
                                     <IoMdClose size={18} />
                                 </button>
-                                <div className="text-lg font-semibold">
-                                    {title}
-                                </div>
+                                <div className="text-lg font-semibold">{title}</div>
                             </div>
                             {/* BODY */}
                             <div className="relative p-6 flex-auto">{body}</div>
                             {/* FOOTER */}
                             <div className="flex flex-col gap-2 p-6">
                                 <div className="flex flex-row items-center gap-4 w-full">
-                                    <Button label="Botão" />
+                                    {secondaryAction && secondaryActionLabel && (
+                                        <Button
+                                            outline
+                                            disabled={disabled}
+                                            label={secondaryActionLabel}
+                                            onClick={handleSecondaryAction}
+                                        />
+                                    )}
+                                    <Button
+                                        disabled={disabled}
+                                        label={actionLabel}
+                                        onClick={handleSubmit}
+                                    />
                                 </div>
                             </div>
                         </div>

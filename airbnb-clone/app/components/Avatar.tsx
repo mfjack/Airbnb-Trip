@@ -6,13 +6,7 @@ import ProfileAvatar from "../public/images/placeholder.jpg";
 const Avatar = () => {
     return (
         <>
-            <Image
-                className="rounded-full"
-                src={ProfileAvatar}
-                alt="Avatar"
-                width={30}
-                height={30}
-            />
+            <Image className="rounded-full" src={ProfileAvatar} alt="Avatar" width={30} height={30} />
         </>
     );
 };

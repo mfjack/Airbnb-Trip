@@ -7,6 +7,11 @@ import { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Modal from "./Modal";
 import Heading from "../Heading";
+import Input from "../input/Input";
+import toast from "react-hot-toast";
+import Button from "../Button";
+import { FcGoogle } from "react-icons/fc";
+import { AiFillGithub } from "react-icons/ai";
 
 const RegisterModal = () => {
     const registerModal = useRegisterModal();
@@ -24,12 +29,6 @@ const RegisterModal = () => {
         },
     });
 
-    const bodyContent = (
-        <div className="flex flex-col gap-4">
-            <Heading title='Bem-vindo(a) ao Airbnb' subtitle="Criar conta" />
-        </div>
-    );
-
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true);
 
@@ -39,12 +38,62 @@ const RegisterModal = () => {
                 registerModal.onClose();
             })
             .catch((error) => {
-                console.log(error);
+                toast.error("Algo de errado!");
             })
             .finally(() => {
                 setIsLoading(false);
             });
     };
+
+    const bodyContent = (
+        <div className="flex flex-col gap-3">
+            <Heading title="Bem-vindo(a) ao Airbnb" subtitle="Criar conta" />
+            <Input
+                id="email"
+                label="E-mail"
+                disabled={isLoading}
+                register={register}
+                errors={errors}
+                required
+            />
+            <Input
+                id="name"
+                label="Nome"
+                disabled={isLoading}
+                register={register}
+                errors={errors}
+                required
+            />
+            <Input
+                id="password"
+                label="Senha"
+                type="password"
+                disabled={isLoading}
+                register={register}
+                errors={errors}
+                required
+            />
+        </div>
+    );
+
+    const footerContent = (
+        <div className="flex flex-col gap-2 mt-1">
+            <hr />
+            <Button outline label="Cadastrar com Google" icon={FcGoogle} onClick={() => {}} />
+            <Button outline label="Cadastrar com GitHub" icon={AiFillGithub} onClick={() => {}} />
+            <div className="text-neutral-500 text-center mt-4 font-light">
+                <div className="flex flex-row justify-center items-center gap-2">
+                    <div>Já possui conta?</div>
+                    <div
+                        className="text-neutral-800 cursor-pointer hover:underline"
+                        onClick={registerModal.onClose}
+                    >
+                        Log in
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
 
     return (
         <Modal
@@ -55,6 +104,7 @@ const RegisterModal = () => {
             onClose={registerModal.onClose}
             onSubmit={handleSubmit(onSubmit)}
             body={bodyContent}
+            footer={footerContent}
         />
     );
 };

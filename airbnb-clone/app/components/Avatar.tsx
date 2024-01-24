@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import ProfileAvatar from "../public/images/placeholder.jpg";
+import ProfileAvatar from "@/public/images/placeholder.jpg";
 
 const Avatar = () => {
     return (

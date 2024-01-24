@@ -77,8 +77,18 @@ const LoginModal = () => {
     const footerContent = (
         <div className="flex flex-col gap-2 mt-1">
             <hr />
-            <Button outline label="Cadastrar com Google" icon={FcGoogle} onClick={() => {}} />
-            <Button outline label="Cadastrar com GitHub" icon={AiFillGithub} onClick={() => {}} />
+            <Button
+                outline
+                label="Cadastrar com Google"
+                icon={FcGoogle}
+                onClick={() => {}}
+            />
+            <Button
+                outline
+                label="Cadastrar com GitHub"
+                icon={AiFillGithub}
+                onClick={() => signIn("github")}
+            />
             <div className="text-neutral-500 text-center mt-4 font-light">
                 <div className="flex flex-row justify-center items-center gap-2">
                     <div>Já possui conta?</div>

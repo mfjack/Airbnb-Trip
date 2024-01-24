@@ -12,6 +12,7 @@ import toast from "react-hot-toast";
 import Button from "../Button";
 import { FcGoogle } from "react-icons/fc";
 import { AiFillGithub } from "react-icons/ai";
+import { signIn } from "next-auth/react";
 
 const RegisterModal = () => {
     const registerModal = useRegisterModal();
@@ -79,8 +80,18 @@ const RegisterModal = () => {
     const footerContent = (
         <div className="flex flex-col gap-2 mt-1">
             <hr />
-            <Button outline label="Cadastrar com Google" icon={FcGoogle} onClick={() => {}} />
-            <Button outline label="Cadastrar com GitHub" icon={AiFillGithub} onClick={() => {}} />
+            <Button
+                outline
+                label="Cadastrar com Google"
+                icon={FcGoogle}
+                onClick={() => signIn("google")}
+            />
+            <Button
+                outline
+                label="Cadastrar com GitHub"
+                icon={AiFillGithub}
+                onClick={() => signIn("github")}
+            />
             <div className="text-neutral-500 text-center mt-4 font-light">
                 <div className="flex flex-row justify-center items-center gap-2">
                     <div>Já possui conta?</div>

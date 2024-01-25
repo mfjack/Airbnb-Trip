@@ -3,14 +3,14 @@
 import { Icon } from "leaflet";
 
 interface CategoryInputProps {
-   icon: Icon;
+   IconComponent: React.FC<{ size: number }>;
    label: string;
    selected?: boolean;
    onClick: (value: string) => void;
 }
 
 const CategoryInput: React.FC<CategoryInputProps> = ({
-   icon: Icon,
+   IconComponent,
    label,
    selected,
    onClick,
@@ -21,7 +21,7 @@ const CategoryInput: React.FC<CategoryInputProps> = ({
          className={` rounded-xl border-2 p-4 flex flex-col gap-3 hover:border-black transition cursor-pointer ${selected ? "border-black" : "border-neutral-200"}
    `}
       >
-         <Icon size={25} />
+         <IconComponent size={25} />
          <div className="font-semibold">{label}</div>
       </div>
    );

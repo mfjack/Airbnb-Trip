@@ -105,7 +105,7 @@ const RentModal = () => {
                      onClick={(category) => setCustomValue("category", category)}
                      selected={category === item.label}
                      label={item.label}
-                     icon={item.icon}
+                     IconComponent={item.icon}
                   />
                </div>
             ))}
@@ -170,6 +170,7 @@ const RentModal = () => {
          secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}
          title="Airbnb Home"
          body={bodyContent}
+         disabled={false}
       />
    );
 };

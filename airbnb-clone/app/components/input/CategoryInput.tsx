@@ -1,6 +1,6 @@
 "use client";
 
-import { IconType } from "react-icons";
+import { Icon } from "leaflet";
 
 interface CategoryInputProps {
    icon: Icon;

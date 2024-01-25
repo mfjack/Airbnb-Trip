@@ -39,7 +39,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                className="hidden md:block sm:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition"
                onClick={onRent}
             >
-               Airbnb Home
+               Sua acomodação
             </button>
             <button
                className="p-4 md:py-1 md:px-2 border-[1px] border-neutral-200 flex flex-row items-center gap-3 rounded-full hover: shadow-md transition"
@@ -56,7 +56,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                <div className="flex flex-col cursor-pointer">
                   {currentUser ? (
                      <>
-                        <MenuItem onClick={rentModal.onOpen} label="Airbnb Home" />
+                        <MenuItem onClick={rentModal.onOpen} label="Sua acomodação" />
                         <MenuItem onClick={() => {}} label="Reserva" />
                         <MenuItem onClick={() => {}} label="Viagens" />
                         <MenuItem onClick={() => {}} label="Favorito" />

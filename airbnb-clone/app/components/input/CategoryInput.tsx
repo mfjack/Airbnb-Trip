@@ -1,7 +1,5 @@
 "use client";
 
-import { Icon } from "leaflet";
-
 interface CategoryInputProps {
    IconComponent: React.FC<{ size: number }>;
    label: string;

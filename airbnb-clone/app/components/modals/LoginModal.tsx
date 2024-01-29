@@ -15,74 +15,74 @@ import { useRouter } from "next/navigation";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 
 const LoginModal = () => {
-   const router = useRouter();
-   const registerModal = useRegisterModal();
-   const loginModal = useLoginModal();
-   const [isLoading, setIsLoading] = useState(false);
+    const router = useRouter();
+    const registerModal = useRegisterModal();
+    const loginModal = useLoginModal();
+    const [isLoading, setIsLoading] = useState(false);
 
-   const {
-      register,
-      handleSubmit,
-      formState: { errors },
-   } = useForm<FieldValues>({
-      defaultValues: {
-         email: "",
-         password: "",
-      },
-   });
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<FieldValues>({
+        defaultValues: {
+            email: "",
+            password: "",
+        },
+    });
 
-   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-      setIsLoading(true);
+    const onSubmit: SubmitHandler<FieldValues> = (data) => {
+        setIsLoading(true);
 
-      signIn("credentials", {
-         ...data,
-         redirect: false,
-      }).then((callback) => {
-         setIsLoading(false);
+        signIn("credentials", {
+            ...data,
+            redirect: false,
+        }).then((callback) => {
+            setIsLoading(false);
 
-         if (callback?.ok) {
-            toast.success("Usuário logado com sucesso");
-            router.refresh();
-            loginModal.onClose();
-         }
-         if (callback?.error) {
-            toast.error(callback.error);
-         }
-      });
-   };
+            if (callback?.ok) {
+                toast.success("Usuário logado com sucesso");
+                router.refresh();
+                loginModal.onClose();
+            }
+            if (callback?.error) {
+                toast.error(callback.error);
+            }
+        });
+    };
 
-   const toggle = useCallback(() => {
-      loginModal.onClose();
-      registerModal.onOpen();
-   }, [loginModal, registerModal]);
+    const toggle = useCallback(() => {
+        loginModal.onClose();
+        registerModal.onOpen();
+    }, [loginModal, registerModal]);
 
-   const bodyContent = (
-      <div className="flex flex-col gap-3">
-         <Heading title="Bem-vindo(a) de volta!" subtitle="Acessar conta" />
-         <Input
-            id="email"
-            label="E-mail"
-            disabled={isLoading}
-            register={register}
-            errors={errors}
-            required
-         />
-         <Input
-            id="password"
-            label="Senha"
-            type="password"
-            disabled={isLoading}
-            register={register}
-            errors={errors}
-            required
-         />
-      </div>
-   );
+    const bodyContent = (
+        <div className="flex flex-col gap-3">
+            <Heading title="Bem-vindo(a) de volta!" subtitle="Acessar conta" />
+            <Input
+                id="email"
+                label="E-mail"
+                disabled={isLoading}
+                register={register}
+                errors={errors}
+                required
+            />
+            <Input
+                id="password"
+                label="Senha"
+                type="password"
+                disabled={isLoading}
+                register={register}
+                errors={errors}
+                required
+            />
+        </div>
+    );
 
-   const footerContent = (
-      <div className="flex flex-col gap-2 mt-1">
-         <hr />
-         {/* <Button
+    const footerContent = (
+        <div className="flex flex-col gap-2 mt-1">
+            <hr />
+            {/* <Button
                 outline
                 label="Cadastrar com Google"
                 icon={FcGoogle}
@@ -94,27 +94,30 @@ const LoginModal = () => {
                 icon={AiFillGithub}
                 onClick={() => signIn("github")}
             /> */}
-         <div className="justify-center flex flex-row items-center gap-2">
-            <div>Primeira vez aqui?</div>
-            <div onClick={toggle} className="text-neutral-800 cursor-pointer hover:underline">
-               Criar conta
+            <div className="justify-center flex flex-row items-center gap-2">
+                <div>Primeira vez aqui?</div>
+                <div
+                    onClick={toggle}
+                    className="text-neutral-800 cursor-pointer hover:underline"
+                >
+                    Criar conta
+                </div>
             </div>
-         </div>
-      </div>
-   );
+        </div>
+    );
 
-   return (
-      <Modal
-         disabled={isLoading}
-         isOpen={loginModal.isOpen}
-         title="Login"
-         actionLabel="Entrar"
-         onClose={loginModal.onClose}
-         onSubmit={handleSubmit(onSubmit)}
-         body={bodyContent}
-         footer={footerContent}
-      />
-   );
+    return (
+        <Modal
+            disabled={isLoading}
+            isOpen={loginModal.isOpen}
+            title="Login"
+            actionLabel="Entrar"
+            onClose={loginModal.onClose}
+            onSubmit={handleSubmit(onSubmit)}
+            body={bodyContent}
+            footer={footerContent}
+        />
+    );
 };
 
 export default LoginModal;

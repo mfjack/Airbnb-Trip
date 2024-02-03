@@ -54,28 +54,28 @@ const RegisterModal = () => {
     }, [loginModal, registerModal]);
 
     const bodyContent = (
-        <div className="flex flex-col gap-3">
-            <Heading title="Bem-vindo(a) ao Airbnb" subtitle="Criar conta" />
+        <div className='flex flex-col gap-3'>
+            <Heading title='Bem-vindo(a) ao Airbnb' subtitle='Criar conta' />
             <Input
-                id="email"
-                label="E-mail"
+                id='email'
+                label='E-mail'
                 disabled={isLoading}
                 register={register}
                 errors={errors}
                 required
             />
             <Input
-                id="name"
-                label="Nome"
+                id='name'
+                label='Nome'
                 disabled={isLoading}
                 register={register}
                 errors={errors}
                 required
             />
             <Input
-                id="password"
-                label="Senha"
-                type="password"
+                id='password'
+                label='Senha'
+                type='password'
                 disabled={isLoading}
                 register={register}
                 errors={errors}
@@ -85,7 +85,7 @@ const RegisterModal = () => {
     );
 
     const footerContent = (
-        <div className="flex flex-col gap-2 mt-1">
+        <div className='flex flex-col gap-2 mt-1'>
             <hr />
             {/* <Button
                 outline
@@ -99,13 +99,12 @@ const RegisterModal = () => {
                 icon={AiFillGithub}
                 onClick={() => signIn("github")}
             /> */}
-            <div className="text-neutral-500 text-center mt-4 font-light">
-                <div className="flex flex-row justify-center items-center gap-2">
+            <div className='text-neutral-500 text-center mt-4 font-light'>
+                <div className='flex flex-row justify-center items-center gap-2'>
                     <div>Já possui conta?</div>
                     <div
-                        className="text-neutral-800 cursor-pointer hover:underline"
-                        onClick={toggle}
-                    >
+                        className='text-neutral-800 cursor-pointer hover:underline'
+                        onClick={toggle}>
                         Log in
                     </div>
                 </div>
@@ -117,8 +116,8 @@ const RegisterModal = () => {
         <Modal
             disabled={isLoading}
             isOpen={registerModal.isOpen}
-            title="Registro"
-            actionLabel="Criar conta"
+            title='Registro'
+            actionLabel='Criar conta'
             onClose={registerModal.onClose}
             onSubmit={handleSubmit(onSubmit)}
             body={bodyContent}

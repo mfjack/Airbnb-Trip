@@ -133,9 +133,7 @@ const RentModal = () => {
                 {categories.map((item) => (
                     <div className="col-span-1" key={item.label}>
                         <CategoryInput
-                            onClick={(category) =>
-                                setCustomValue("category", category)
-                            }
+                            onClick={(category) => setCustomValue("category", category)}
                             selected={category === item.label}
                             label={item.label}
                             IconComponent={item.icon}
@@ -239,10 +237,7 @@ const RentModal = () => {
     if (step === STEPS.PRICE) {
         bodyContent = (
             <div className="flex flex-col gap-8">
-                <Heading
-                    title="Defina o valor"
-                    subtitle="Qual o valor da diária?"
-                />
+                <Heading title="Defina o valor" subtitle="Qual o valor da diária?" />
 
                 <Input
                     id="price"
